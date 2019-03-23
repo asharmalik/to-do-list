@@ -1,7 +1,7 @@
 let toDoId = 0;
 
-export const addTodo = label => ({
-    type: 'ADD_TODO',
+export const addTask = label => ({
+    type: 'ADD',
     id: toDoId++,
     label
 });

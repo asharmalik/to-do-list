@@ -1,54 +1,26 @@
 import React, { Component } from 'react';
-import Task from './components/Task';
+import { connect } from 'react-redux'
 import AddTask from './components/AddTask';
+import TasksList from './components/TasksList';
 import './App.css';
+import { addTask } from './actions';
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  onAddTask = (task) => {
+    this.props.dispatch(addTask(task));
+  };
 
-    this.state = {
-      tasks: [
-        {
-          id: 0,
-          label: "Laundry",
-          completed: false
-        },
-        {
-          id: 1,
-          label: "Dishes",
-          completed: false
-        }
-      ]
-    }
-  }
-
-  getTasks() {
-    return <div>
-      {
-        this.state.tasks.map((task, index) => {
-          return <Task key={index} completed={task.completed} label={task.label} onClick={this.onTaskClick}></Task>;
-        })
-      }
-    </div>
-  }
-
-  onAddTask(task) {
-    console.log(task);
-  }
-
-  onTaskClick(e) {
+  onTaskChange = (e) => {
     console.log('task clicked');
-  }
+    console.log(e.target);
+  };
 
   render() {
     return (
       <div className="App-Container">
         <div className="App">
           <div className="App-Header">Tasks</div>
-          <div className="App-Tasks">
-            {this.getTasks()}
-          </div>
+          <TasksList onTaskChange={this.onTaskChange}/>
           <AddTask className="Add-Task" onAddTask={this.onAddTask}/>
         </div>
       </div>
@@ -56,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
