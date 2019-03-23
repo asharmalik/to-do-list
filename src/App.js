@@ -31,6 +31,10 @@ class App extends Component {
     </div>
   }
 
+  onAddTask(task) {
+    console.log(task);
+  }
+
   render() {
     return (
       <div className="App-Container">
@@ -39,7 +43,7 @@ class App extends Component {
           <div className="App-Tasks">
             {this.getTasks()}
           </div>
-          <AddTask className="Add-Task"/>
+          <AddTask className="Add-Task" onAddTask={this.onAddTask}/>
         </div>
       </div>
     );
