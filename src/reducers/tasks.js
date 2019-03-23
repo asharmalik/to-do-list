@@ -1,6 +1,8 @@
+import {ACTIONS} from '../actions'
+
 const tasks = (state = [], action) => {
     switch (action.type) {
-        case 'ADD':
+        case ACTIONS.ADD:
             return [
                 ...state,
                 {
@@ -9,7 +11,7 @@ const tasks = (state = [], action) => {
                     completed: false
                 }
             ];
-        case 'TOGGLE':
+        case ACTIONS.TOGGLE:
             return state.map(task =>
                 (task.id === action.id) ? {...task, completed: !task.completed} : task
             );
