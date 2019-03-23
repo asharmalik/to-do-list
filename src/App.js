@@ -10,10 +10,12 @@ class App extends Component {
     this.state = {
       tasks: [
         {
+          id: 0,
           label: "Laundry",
           completed: false
         },
         {
+          id: 1,
           label: "Dishes",
           completed: false
         }
@@ -25,7 +27,7 @@ class App extends Component {
     return <div>
       {
         this.state.tasks.map((task, index) => {
-          return <Task key={index} completed={task.completed} label={task.label}></Task>;
+          return <Task key={index} completed={task.completed} label={task.label} onClick={this.onTaskClick}></Task>;
         })
       }
     </div>
@@ -33,6 +35,10 @@ class App extends Component {
 
   onAddTask(task) {
     console.log(task);
+  }
+
+  onTaskClick(e) {
+    console.log('task clicked');
   }
 
   render() {
