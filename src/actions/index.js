@@ -5,3 +5,8 @@ export const addTask = label => ({
     id: toDoId++,
     label
 });
+
+export const toggleTask = id => ({
+    type: 'TOGGLE',
+    id
+})

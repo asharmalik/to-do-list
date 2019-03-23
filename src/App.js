@@ -3,16 +3,15 @@ import { connect } from 'react-redux'
 import AddTask from './components/AddTask';
 import TasksList from './components/TasksList';
 import './App.css';
-import { addTask } from './actions';
+import { addTask, toggleTask } from './actions';
 
 class App extends Component {
   onAddTask = (task) => {
     this.props.dispatch(addTask(task));
   };
 
-  onTaskChange = (e) => {
-    console.log('task clicked');
-    console.log(e.target);
+  onToggleTask = (id) => {
+    this.props.dispatch(toggleTask(id));
   };
 
   render() {
@@ -20,7 +19,7 @@ class App extends Component {
       <div className="App-Container">
         <div className="App">
           <div className="App-Header">Tasks</div>
-          <TasksList onTaskChange={this.onTaskChange}/>
+          <TasksList onToggleTask={this.onToggleTask}/>
           <AddTask className="Add-Task" onAddTask={this.onAddTask}/>
         </div>
       </div>

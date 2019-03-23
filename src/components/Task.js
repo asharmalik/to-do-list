@@ -11,7 +11,7 @@ class Task extends Component {
     render() {
         return (
             <div className="Task">
-                <input type="radio" checked={this.props.completed} onChange={this.props.onChange}></input> {this.props.label}
+                <input type="radio" checked={this.props.completed} onClick={this.props.onChange} onChange={() => {}}></input> {this.props.label}
             </div>
         );
     }

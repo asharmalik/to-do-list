@@ -5,14 +5,14 @@ import Task from './Task';
 
 class TasksList extends Component {
     static propTypes = {
-        onTaskChange: PropTypes.func.isRequired,
+        onToggleTask: PropTypes.func.isRequired,
     };
 
     getTasks() {
         return <div>
             {
                 this.props.tasks.map((task, index) => {
-                    return <Task key={index} completed={task.completed} label={task.label} onChange={this.props.onTaskChange}></Task>;
+                    return <Task key={index} completed={task.completed} label={task.label} onChange={() => {this.props.onToggleTask(task.id)}}></Task>;
                 })
             }
         </div>
@@ -28,7 +28,6 @@ class TasksList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('state', state);
     return state;
 };
 
