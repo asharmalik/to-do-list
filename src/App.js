@@ -9,12 +9,10 @@ class App extends Component {
     this.state = {
       tasks: [
         {
-          id: 0,
           label: "Laundry",
           completed: false
         },
         {
-          id: 1,
           label: "Dishes",
           completed: false
         }
@@ -25,8 +23,8 @@ class App extends Component {
   getTasks() {
     return <div>
       {
-        this.state.tasks.map((task) => {
-          return <Task completed={task.completed} label={task.label}></Task>;
+        this.state.tasks.map((task, index) => {
+          return <Task key={index} completed={task.completed} label={task.label}></Task>;
         })
       }
     </div>
@@ -34,8 +32,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.getTasks()}
+      <div className="App-Container">
+        <div className="App">
+          <div className="App-Header">Tasks</div>
+          <div className="App-Tasks">
+            {this.getTasks()}
+          </div>
+        </div>
       </div>
     );
   }
