@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Task from './components/Task';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      tasks: [
+        {
+          id: 0,
+          label: "Laundry",
+          completed: false
+        },
+        {
+          id: 1,
+          label: "Dishes",
+          completed: false
+        }
+      ]
+    }
+  }
+
+  getTasks() {
+    return <div>
+      {
+        this.state.tasks.map((task) => {
+          return <Task completed={task.completed} label={task.label}></Task>;
+        })
+      }
+    </div>
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.getTasks()}
       </div>
     );
   }
