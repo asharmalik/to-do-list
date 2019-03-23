@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Task from './components/Task';
+import AddTask from './components/AddTask';
 import './App.css';
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
           <div className="App-Tasks">
             {this.getTasks()}
           </div>
+          <AddTask className="Add-Task"/>
         </div>
       </div>
     );
